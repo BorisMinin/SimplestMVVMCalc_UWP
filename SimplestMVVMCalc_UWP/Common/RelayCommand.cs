@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace SimplestMVVMCalc_UWP.Common
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         #region Поля класса RelayCommand
         private Action<object> _execute;
