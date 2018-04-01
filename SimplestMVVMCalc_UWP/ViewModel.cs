@@ -9,7 +9,7 @@ namespace SimplestMVVMCalc_UWP
 {
     class ViewModel : INotifyPropertyChanged
     {
-        
+           
         #region Объявление переменных
         string op1; // переменная для хранения первого операнда
         string op2; // переменная для хранения второго операнда
