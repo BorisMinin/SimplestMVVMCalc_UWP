@@ -16,6 +16,10 @@ namespace SimplestMVVMCalc_UWP
         string result; // переменная для вывд ответа
         #endregion
 
+        #region Свойства команды
+        public RelayCommand CalcCommand { get; }
+        #endregion
+
         #region Реализация интерфейса INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         //public void OnPropertyChanged(string propertyName)
@@ -23,10 +27,6 @@ namespace SimplestMVVMCalc_UWP
         //    if (PropertyChanged != null)
         //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         //}
-        #endregion
-
-        #region Свойства команды
-
         #endregion
 
         #region Конструктор класса ViewModel
