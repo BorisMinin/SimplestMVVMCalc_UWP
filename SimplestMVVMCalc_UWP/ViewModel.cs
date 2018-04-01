@@ -13,15 +13,6 @@ namespace SimplestMVVMCalc_UWP
         string _result; // переменная для вывд ответа
         #endregion
 
-        #region Реализация интерфейса INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-
         #region Свойства привязки
         //Свойство для первого операнда
         public string Operand1
@@ -94,6 +85,15 @@ namespace SimplestMVVMCalc_UWP
                 return false;
             else
                 return true;
+        }
+        #endregion
+        
+        #region Реализация интерфейса INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }
