@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
-//1
-
+using System.ComponentModel;//1
 namespace SimplestMVVMCalc_UWP
 {
     class ViewModel : INotifyPropertyChanged
-    {
-           
+    {           
         #region Объявление переменных
-        string _op1; // переменная для хранения первого операнда
-        string _op2; // переменная для хранения второго операнда
+        string _op1, _op2; // переменные для хранения числовых значений
         string _result; // переменная для вывд ответа
-        #endregion
-
-        #region Свойства команды
-        public RelayCommand CalcCommand { get; }
         #endregion
 
         #region Реализация интерфейса INotifyPropertyChanged
@@ -31,35 +23,50 @@ namespace SimplestMVVMCalc_UWP
         #endregion
 
         #region Свойства привязки
+        //Свойство для первого операнда
         public string Operand1
         {
-            get { return _op1; }
             set
             {
                 _op1 = value;
                 CalcCommand.RaiseCanExecuteChanged();
             }
+            get { return _op1; }
         }
+        //Свойство для второго операнда
         public string Operand2
         {
-            get { return _op2; }
             set
             {
                 _op2 = value;
                 CalcCommand.RaiseCanExecuteChanged();
             }
+            get { return _op2; }
         }
+        //Свойство результата вычислений
         public string Result
-        {
-            get { return _result; }
-            set
+        { 
+            private set
             {
                 _result = value;
                 OnPropertyChanged("Result");
             }
+            get { return _result; }
         }
 
+        #endregion
 
+        #region Свойства команды
+
+        public RelayCommand CalcCommand { get; set; }
+
+        #endregion
+
+        #region Конструктор класса ViewModel
+        public ViewModel()
+        {
+            CalcCommand = new RelayCommand(CalcCommandExecute, CanExecuteCalcCommand);
+        }
         #endregion
 
         #region Логика команды
@@ -87,13 +94,6 @@ namespace SimplestMVVMCalc_UWP
                 return false;
             else
                 return true;
-        }
-        #endregion
-
-        #region Конструктор класса ViewModel
-        public ViewModel()
-        {
-            CalcCommand = new RelayCommand(CalcCommandExecute, CanExecuteCalcCommand);
         }
         #endregion
     }

@@ -6,17 +6,26 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    
+    <Page.Resources>
+        <local:ViewModel x:Key="viewModel"/>
+        <!--<Style TargetType="Button">
+            <Setter Property="Command" Value="{Binding CalcCommand}"/>
+        </Style>-->
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="50,50,50,0">
-            <TextBox Width="40" Text="1op"/>
-            <TextBox Width="40" Text="2op"/>
-            <TextBlock Height="Auto" FontSize="36"/>
+            <!--Текстовые поля-->
+            <TextBox Width="40" Text="{Binding Operand1, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBox Width="40" Text="{Binding Operand2, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBlock Height="Auto" Text="{Binding Result}" FontSize="36" TextAlignment="Center"/>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Content="+" CommandParameter="+"/>
-                <Button Content="-" CommandParameter="-"/>
-                <Button Content="*" CommandParameter="*"/>
-                <Button Content="/" CommandParameter="/"/>
+                <!--Кнопки-->
+                <Button Content="+" CommandParameter="+" Command="{Binding CalcCommand}"/>
+                <Button Content="-" CommandParameter="-" Command="{Binding CalcCommand}"/>
+                <Button Content="*" CommandParameter="*" Command="{Binding CalcCommand}"/>
+                <Button Content="/" CommandParameter="/" Command="{Binding CalcCommand}"/>
             </StackPanel>
         </StackPanel>            
     </Grid>
